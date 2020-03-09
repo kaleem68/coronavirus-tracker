@@ -1,0 +1,26 @@
+
+<a
+[routerLink]="['/']"
+*ngIf="!userClickedLinked"
+(click)="showCoronaUpdate()">Click to see latest  corona updates</a>
+
+
+<table id="customers"
+  *ngIf="userClickedLinked"
+>
+  <tr>
+    <th>State</th>
+    <th>Country</th>
+    <th>LatestTotalCases</th>
+    <th>DiffFromPrevDay</th>
+  </tr>
+
+  <tr *ngFor="let locationStat of locationStats">
+
+    <td>{{locationStat.state}}</td>
+    <td>{{locationStat.country}}</td>
+    <td [ngClass]="{'danger': true}">{{locationStat.latestTotalCases}}</td>
+    <td [ngClass]="{'semi-danger': true}">{{locationStat.diffFromPrevDay}}</td>
+  </tr>
+
+</table>
